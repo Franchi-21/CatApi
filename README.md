@@ -9,3 +9,4 @@ Tools I used to work on this project:
 - Hilt to inject dependencies
 - https://thecatapi.com/
 - Coil library to render the photos of the cats
+- Unit tests
