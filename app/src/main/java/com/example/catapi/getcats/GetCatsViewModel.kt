@@ -6,8 +6,10 @@ import com.example.catapi.data.CatListRepository
 import com.example.catapi.data.domain.entities.Cat
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,16 +18,16 @@ import javax.inject.Inject
 class GetCatsViewModel @Inject constructor(
     private val repository: CatListRepository,
 ) : ViewModel() {
-    private val _cats = MutableStateFlow<List<Cat>>(emptyList())
-    val cats: StateFlow<List<Cat>> = _cats
+    private val _catList = MutableStateFlow<List<Cat>>(emptyList())
+    val catList: StateFlow<List<Cat>> = _catList
 
     fun getAllCats() {
         viewModelScope.launch {
             repository
                 .getAllCats()
                 .flowOn(Dispatchers.IO)
-                .collect {
-                    _cats.value = it
+                .collectLatest {
+                    _catList.value = it
                 }
         }
     }

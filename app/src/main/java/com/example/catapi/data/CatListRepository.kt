@@ -2,6 +2,7 @@ package com.example.catapi.data
 
 import com.example.catapi.data.domain.CatListUseCase
 import com.example.catapi.data.domain.entities.Cat
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

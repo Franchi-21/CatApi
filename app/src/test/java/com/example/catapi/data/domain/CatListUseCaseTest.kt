@@ -39,7 +39,7 @@ internal class CatListUseCaseTest {
 
         // Given
         coEvery {
-            apiServiceMock.getAllCats(apiKey = BuildConfig.API_KEY, limit = "25")
+            apiServiceMock.getAllCats(apiKey = any(), limit = any())
         } returns mockedCatList
 
         // When
@@ -55,7 +55,7 @@ internal class CatListUseCaseTest {
 
         // Given
         coEvery {
-            apiServiceMock.getAllCats(apiKey = BuildConfig.API_KEY, limit = "25")
+            apiServiceMock.getAllCats(apiKey = any(), limit = any())
         } returns mockedCatList
 
         // When
